@@ -10,11 +10,11 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
         
         body {
-            background: #fafafa;
+            background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -24,17 +24,17 @@
         
         .container {
             background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             width: 100%;
             max-width: 900px;
             overflow: hidden;
-            border: 1px solid #dbdbdb;
+            border: 1px solid #e0e0e0;
         }
         
         .header {
             background: #fff;
-            padding: 12px 16px;
+            padding: 15px 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -48,14 +48,14 @@
         }
         
         .logo i {
-            font-size: 24px;
+            font-size: 28px;
             background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         
         .logo-text {
-            font-size: 18px;
+            font-size: 22px;
             font-weight: 600;
             color: #262626;
         }
@@ -63,62 +63,88 @@
         .grid-info {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
         
         .grid-size {
             background: #f8f8f8;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 13px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
             color: #737373;
         }
         
         .counter {
             background: #0095f6;
             color: white;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 13px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
             font-weight: 500;
         }
         
         .grid-container {
             padding: 15px;
             background: #fff;
-            overflow-y: auto;
-            max-height: calc(100vh - 130px);
         }
         
         .grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+            gap: 12px;
         }
         
         .grid-item {
             position: relative;
-            background: #f0f0f0;
+            background: #f8f8f8;
             overflow: hidden;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             aspect-ratio: 4/5;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 4px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
         
         .grid-item:hover {
-            opacity: 0.9;
-            transform: scale(1.01);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .grid-item img, .grid-item video {
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+        
+        .delete-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .grid-item:hover .delete-btn {
+            opacity: 1;
+        }
+        
+        .delete-btn i {
+            color: #ff3b30;
+            font-size: 14px;
         }
         
         .add-icon {
@@ -157,8 +183,8 @@
         .controls {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            padding: 12px;
+            gap: 15px;
+            padding: 15px;
             background: #fff;
             border-top: 1px solid #efefef;
         }
@@ -174,53 +200,64 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
             font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         
         .btn:hover {
             background: #0081d6;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
         }
         
         .btn.reset {
-            background: #efefef;
-            color: #262626;
+            background: #ff3b30;
         }
         
         .btn.reset:hover {
-            background: #e2e2e2;
+            background: #e0352a;
+        }
+        
+        .btn.upload {
+            background: #34c759;
+        }
+        
+        .btn.upload:hover {
+            background: #2db34a;
         }
         
         .footer {
             margin-top: 20px;
-            color: #8e8e8e;
-            font-size: 12px;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 14px;
             text-align: center;
             max-width: 900px;
             padding: 0 20px;
         }
         
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
             .container {
-                border-radius: 0;
-                border-left: none;
-                border-right: none;
+                border-radius: 8px;
             }
             
             .header {
-                padding: 10px 12px;
+                padding: 12px 15px;
+                flex-direction: column;
+                gap: 12px;
             }
             
-            .logo-text {
-                font-size: 16px;
+            .grid-info {
+                width: 100%;
+                justify-content: center;
             }
             
             .grid {
-                gap: 6px;
+                gap: 8px;
             }
             
             .btn {
-                padding: 8px 15px;
+                padding: 8px 16px;
                 font-size: 13px;
             }
         }
@@ -231,7 +268,7 @@
         <div class="header">
             <div class="logo">
                 <i class="fab fa-instagram"></i>
-                <div class="logo-text">Content Planner</div>
+                <div class="logo-text">Instagram Grid Planner</div>
             </div>
             <div class="grid-info">
                 <div class="grid-size">3×6 Grid</div>
@@ -244,17 +281,17 @@
         </div>
         
         <div class="controls">
-            <button class="btn" id="uploadBtn">
+            <button class="btn upload" id="uploadBtn">
                 <i class="fas fa-cloud-upload-alt"></i> Upload Media
             </button>
             <button class="btn reset" id="resetBtn">
-                <i class="fas fa-redo"></i> Reset Grid
+                <i class="fas fa-trash-alt"></i> Reset All
             </button>
         </div>
     </div>
     
     <div class="footer">
-        Click on any grid cell to add media. Your content is saved in your browser's local storage.
+        Click on any grid cell to add media | Hover over uploaded content to delete individual items
     </div>
 
     <script>
@@ -264,6 +301,15 @@
         const totalCells = 18;
         let filledCells = 0;
         
+        // Function to create a delete button
+        function createDeleteButton() {
+            const deleteBtn = document.createElement('button');
+            deleteBtn.className = 'delete-btn';
+            deleteBtn.innerHTML = '<i class="fas fa-times"></i>';
+            return deleteBtn;
+        }
+        
+        // Initialize the grid
         for (let i = 0; i < totalCells; i++) {
             const gridItem = document.createElement('div');
             gridItem.className = 'grid-item empty';
@@ -303,6 +349,14 @@
             container.appendChild(mediaElement);
             container.classList.remove('empty');
             
+            // Add delete button
+            const deleteBtn = createDeleteButton();
+            deleteBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                deleteGridItem(container);
+            });
+            container.appendChild(deleteBtn);
+            
             filledCells++;
             updateCounter();
             
@@ -330,6 +384,21 @@
             return video;
         }
         
+        // Delete individual grid item
+        function deleteGridItem(item) {
+            const index = item.dataset.index;
+            item.innerHTML = '';
+            item.classList.add('empty');
+            localStorage.removeItem(`gridItem-${index}`);
+            filledCells--;
+            updateCounter();
+            
+            // Re-add the click event
+            item.addEventListener('click', () => {
+                openFilePicker(item);
+            });
+        }
+        
         // Load saved media on page load
         window.addEventListener('DOMContentLoaded', () => {
             filledCells = 0;
@@ -339,15 +408,34 @@
                 
                 if (data) {
                     if (data.startsWith('data:video')) {
+                        const video = createVideoElement(data);
                         item.innerHTML = '';
-                        item.appendChild(createVideoElement(data));
+                        item.appendChild(video);
                         item.classList.remove('empty');
+                        
+                        // Add delete button
+                        const deleteBtn = createDeleteButton();
+                        deleteBtn.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            deleteGridItem(item);
+                        });
+                        item.appendChild(deleteBtn);
+                        
                         filledCells++;
                     } else if (data.startsWith('data:image')) {
-                        item.innerHTML = '';
                         const img = createImageElement(data);
+                        item.innerHTML = '';
                         item.appendChild(img);
                         item.classList.remove('empty');
+                        
+                        // Add delete button
+                        const deleteBtn = createDeleteButton();
+                        deleteBtn.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            deleteGridItem(item);
+                        });
+                        item.appendChild(deleteBtn);
+                        
                         filledCells++;
                     }
                 }
@@ -377,6 +465,14 @@
                     container.appendChild(mediaElement);
                     container.classList.remove('empty');
                     
+                    // Add delete button
+                    const deleteBtn = createDeleteButton();
+                    deleteBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        deleteGridItem(container);
+                    });
+                    container.appendChild(deleteBtn);
+                    
                     filledCells++;
                     
                     // Save to localStorage
@@ -395,11 +491,16 @@
         
         // Reset button functionality
         document.getElementById('resetBtn').addEventListener('click', () => {
-            if (confirm('Are you sure you want to reset the grid? All media will be removed.')) {
+            if (confirm('Are you sure you want to reset the entire grid? All media will be removed.')) {
                 document.querySelectorAll('.grid-item').forEach(item => {
                     item.innerHTML = '';
                     item.classList.add('empty');
                     localStorage.removeItem(`gridItem-${item.dataset.index}`);
+                    
+                    // Re-add the click event
+                    item.addEventListener('click', () => {
+                        openFilePicker(item);
+                    });
                 });
                 filledCells = 0;
                 updateCounter();
